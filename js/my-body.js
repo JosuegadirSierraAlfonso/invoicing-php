@@ -17,11 +17,32 @@ export class myBody extends HTMLElement{
             document.querySelector("#products").insertAdjacentElement("beforeend", this.plantilla);
         }
     }
-
+    send(e){
+        let input = document.querySelectorAll("input");
+        let info = {}, producto = {}, lista = {}, data = {}, count = 0;
+        producto.product = [];
+        input.forEach((val, id) => {
+            if (id <= 7) {
+                info[val.name] = val.value;
+            } else if (count <= 4) {
+                lista[val.name] = val.value;
+                count++;
+                if (count == 4) {
+                producto.product.push(lista);
+                lista = {};
+                count = 0;
+                }
+            }
+        });
+        data.info = info;
+        data.producto = producto.product;
+        console.log(producto);
+    }
     connectedCallback(){
         this.components().then(html=>{
             this.innerHTML = html;
             this.add = this.querySelector("#Add").addEventListener("click", this.add.bind(this));
+            this.send = this.querySelector("#Send").addEventListener("click", this.send.bind(this));
         })
     }
 }
@@ -42,5 +63,4 @@ let $ = e.target;
             document.querySelector("#products").insertAdjacentElement("beforeend", render.children[0]);
             this.count++;
         }
-
  */

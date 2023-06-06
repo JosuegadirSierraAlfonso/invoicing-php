@@ -25,6 +25,14 @@ export class myProductDetails extends HTMLElement{
                     if (element.name == "Acount") {
                         element.value++;
                     }
+
+                });
+            }
+            else if($.innerHTML == "x"){
+                inputs.forEach(element => {
+                    if (element.name == "Acount") {
+                        box.remove();
+                    }
                 });
             }
         }

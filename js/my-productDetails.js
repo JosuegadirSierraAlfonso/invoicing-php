@@ -10,11 +10,12 @@ export class myProductDetails extends HTMLElement{
     sellection(e){
         let $ = e.target;
         if($.nodeName == "BUTTON"){
-            let inputs = document.querySelectorAll(`#${$.dataset.row} input`);
+            let box = e.target.parentNode.parentNode;
+            let inputs = box.querySelectorAll(`input`);
             if ($.innerHTML == "-") {
                 inputs.forEach(element => {
                     if (element.name == "Acount" && element.value == 0) {
-                        document.querySelector(`#${$.dataset.row}`).remove();
+                        box.remove();
                     } else if (element.name == "Acount") {
                         element.value--;
                     }

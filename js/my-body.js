@@ -11,6 +11,27 @@ export class myBody extends HTMLElement{
     async add(e){
         let $ = e.target;
         if ($.nodeName == "BUTTON") {
+            this.plantilla = this.querySelector("#products").children;
+            this.plantilla =  this.plantilla[ this.plantilla.length-1];
+            this.plantilla =  this.plantilla.cloneNode(true);
+            document.querySelector("#products").insertAdjacentElement("beforeend", this.plantilla);
+        }
+    }
+
+    connectedCallback(){
+        this.components().then(html=>{
+            this.innerHTML = html;
+            this.add = this.querySelector("#Add").addEventListener("click", this.add.bind(this));
+        })
+    }
+}
+customElements.define('my-body',myBody);
+
+
+
+/*
+let $ = e.target;
+        if ($.nodeName == "BUTTON") {
             let plantilla = await (await fetch("view/my-productDetails.html")).text();
             let render = new DOMParser().parseFromString(plantilla, "text/html")["body"];
             render.children[0].id="product_"+this.count;
@@ -21,12 +42,5 @@ export class myBody extends HTMLElement{
             document.querySelector("#products").insertAdjacentElement("beforeend", render.children[0]);
             this.count++;
         }
-    }
-    connectedCallback(){
-        this.components().then(html=>{
-            this.innerHTML = html;
-            this.add = this.querySelector("#Add").addEventListener("click", this.add.bind(this));
-        })
-    }
-}
-customElements.define('my-body',myBody);
+
+ */

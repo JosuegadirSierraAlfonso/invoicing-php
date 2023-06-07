@@ -1,9 +1,37 @@
 <?php
-/* AUROLOAD: |En PHP, el autoloading (carga automática) es una técnica que permite cargar automáticamente las
-clases cuando son necesarias, sin tener que incluir manualmente los archivos de clase en cada punto
-del código. */
-
 trait getInstance{
+    static $instace;
+    //function __construct(private $name, public $age){} //TODO: Declaro directamente la construccion
+    static function getInstance(){
+        $arg = func_get_arg();
+        $arg = array_pop($arg);
+        if (self::$instance == null){
+            self::$instace = new self(...(array) func_get_arg());
+        }
+        return self::$instace;
+    }
+}
+//declare(strict_types=1); //TODO: es para que las funciones o metodos no puedan realizar conversiones
+class humano{
+    
+    public function getName(){
+        return $this->name;
+    }
+    static function ropa(){
+        return "Camisa negra";
+    }
+}
+var_dump(humano::ropa());
+//*$obj = new humano("Gadir", 22);
+//*var_dump($obj->getName());
+
+
+
+
+
+
+
+/* trait getInstance{
     public static $instance;
     public static function getInstance() {
         $arg = func_get_args();
@@ -11,6 +39,8 @@ trait getInstance{
         return (!(self::$instance instanceof self) || !empty($arg)) ? self::$instance = new static(...(array) $arg) : self::$instance;
     }
 }
+
+
 function autoload($class) {
     // Directorios donde buscar archivos de clases
     $directories = [
@@ -31,6 +61,13 @@ function autoload($class) {
         }
     }
 }
-spl_autoload_register('autoload');
+spl_autoload_register('autoload'); */
+
+
+
+
+
+
+
 
 ?>

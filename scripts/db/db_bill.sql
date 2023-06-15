@@ -41,3 +41,17 @@ ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_seller_fk FOREIGN KEY(fk_id_seller
 
 ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_product_fk FOREIGN KEY(fk_id_product) REFERENCES tb_product(id_product);
 
+INSERT INTO tb_client(Identification,Full_Name,Email,Address,Phone) VALUES(1234567890,"Gadir Sierra","ga@gmail.com","cra34a","+57316304");
+
+SELECT Full_Name AS 'names' FROM tb_client;
+INSERT INTO tb_bill(n_bill,fk_Identification,fk_id_seller,fk_id_product) VALUES(1,123,1,1);
+
+SELECT * FROM tb_client ORDER BY (full_name) DESC LIMIT 2 OFFSET 12;
+SELECT AVG(identificacion) FROM tb_client;
+
+
+SELECT  COUNT(*) INTO @AAA FROM tb_client;
+SELECT @AAA;
+
+SET @mi_variable = 10;
+SELECT @mi_variable;

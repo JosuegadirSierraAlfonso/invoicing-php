@@ -41,7 +41,7 @@ ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_seller_fk FOREIGN KEY(fk_id_seller
 
 ALTER TABLE tb_bill ADD CONSTRAINT tb_bill_tb_product_fk FOREIGN KEY(fk_id_product) REFERENCES tb_product(id_product);
 
-INSERT INTO tb_client(Identification,Full_Name,Email,Address,Phone) VALUES(12345678,"Gadir Sierra","ga@gmail.com","cra34a","+57316304");
+INSERT INTO tb_client(Identification,Full_Name,Email,Address,Phone) VALUES(13345678,"Gadez Sierra","gad@gmail.com","calle80","+57317304");
 
 SELECT Full_Name AS 'names' FROM tb_client;
 INSERT INTO tb_bill(n_bill,fk_Identification,fk_id_seller,fk_id_product) VALUES(1,123,1,1);
